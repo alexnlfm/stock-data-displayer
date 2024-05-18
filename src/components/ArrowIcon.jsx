@@ -1,4 +1,5 @@
 import PropTypes from 'prop-types';
+
 import { colors } from '../constants/styles';
 
 function ArrowIcon({ priceChange }) {  

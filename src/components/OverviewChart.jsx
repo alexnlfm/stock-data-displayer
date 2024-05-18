@@ -12,7 +12,6 @@ const periods = [
   { label: '1 quater', amount: 1, units: 'quarters' },
   { label: '1 year', amount: 1, units: 'years' }
 ];
-
 const intervalToPeriodsMap = {
   days: 0,
   weeks: 10,
@@ -55,6 +54,8 @@ function OverviewChart() {
     </>
   );
 }
+
+// ---------------------- Styled components ----------------------
 
 const PeriodsButtons = styled.div`
   width: 35%;

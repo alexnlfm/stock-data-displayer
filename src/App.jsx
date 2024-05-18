@@ -30,7 +30,6 @@ function App() {
   const [currentTab, setCurrentTab] = useState(navigationTabs[0].id);
   
   function handleTabClick(e) {
-    // TODO: Fix issue of redundant focusing on div (text cursor blinking on click)
     const { id } = e.target;
     setCurrentTab(id);
   }
