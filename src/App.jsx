@@ -10,7 +10,7 @@ const staticAppleStockData = {
   tickerSymbol: 'AAPL',
   stockExchangeName: 'Nasdaq - US',
   currentPrice: 189.93,
-  priceChange: -0.09,
+  priceChange: 0.09,
   percentChange: 0.05,
   lastUpdated: '2024-05-18T12:00:00Z'
 };
