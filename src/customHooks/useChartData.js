@@ -6,18 +6,28 @@ const URL_SUFFIX = '%2023:59&_fields=ChartBars.StartDate,ChartBars.High,ChartBar
 
 const datesFormat = 'MM/DD/YYYY';
 
+const cachedData = {};
+
+
 function useChartData(selectedPeriod) {
   const [isLoading, setIsLoading] = useState(true);
   const [chartData, setChartData] = useState([]);
 
   useEffect(() => {
-    async function asyncFunc() {      
+    const cacheKey = `${selectedPeriod.amount}-${selectedPeriod.units}`;
+    if (cachedData[cacheKey]) {
+      setChartData(cachedData[cacheKey]);
+      setIsLoading(false);
+      return;
+    }
+    async function asyncFunc() {
       setIsLoading(true);
       const startDate = moment().subtract(selectedPeriod.amount, selectedPeriod.units).format(datesFormat);
       const endDate = moment().format(datesFormat);
       const url = `${URL_PREFIX}StartTime=${startDate}&EndTime=${endDate}${URL_SUFFIX}`;
       const result = await fetch(url);
       const data = await result.json();
+      cachedData[cacheKey] = data;
       setChartData(data);
       setIsLoading(false);
     }

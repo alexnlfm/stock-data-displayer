@@ -16,7 +16,6 @@ const periods = [
 function OverviewChart() {
   const [selectedPeriod, setSelectedPeriod] = useState({ amount: 1, units: 'days' });
   const { chartData, isLoading } = useChartData(selectedPeriod);
-  console.log('chartData', chartData);
   
   return (
     <>
