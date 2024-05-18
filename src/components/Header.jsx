@@ -1,6 +1,8 @@
-import { useMemo } from 'react';
+import { useMemo, memo } from 'react';
 import PropTypes from 'prop-types';
+import moment from 'moment';
 import styled from 'styled-components';
+import { isEqual } from 'lodash';
 
 import ArrowIcon from './ArrowIcon';
 import { colors } from '../constants/styles';
@@ -17,9 +19,10 @@ function Header({ stockData }) {
   } = stockData;
   const isPositive = priceChange > 0;
   const dateStr = useMemo(
-    () => (new Date(lastUpdated)).toLocaleString(),
+    () => moment(lastUpdated).format('MMMM DD,YYYY HH:mm'),
     [lastUpdated]
   );
+
   return (
     <HeaderCard>
       <LeftSection>
@@ -110,4 +113,6 @@ const ChangeData = styled.span`
   font-size: 18px;
 `;
 
-export default Header;
+const MemoizedHeader = memo(Header, (oldProps, newProps) => isEqual(oldProps.stockData, newProps.stockData));
+
+export default MemoizedHeader;

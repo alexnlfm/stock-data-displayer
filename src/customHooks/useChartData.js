@@ -8,16 +8,20 @@ const datesFormat = 'MM/DD/YYYY';
 
 const cachedData = {};
 
+let isInitialRun = true;
 
 function useChartData(selectedPeriod) {
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
   const [chartData, setChartData] = useState([]);
 
   useEffect(() => {
+    if (isInitialRun) {
+      isInitialRun = false;
+      return;
+    }
     const cacheKey = `${selectedPeriod.amount}-${selectedPeriod.units}`;
     if (cachedData[cacheKey]) {
       setChartData(cachedData[cacheKey]);
-      setIsLoading(false);
       return;
     }
     async function asyncFunc() {
