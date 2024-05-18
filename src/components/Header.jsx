@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 import ArrowIcon from './ArrowIcon';
-import { colors } from '../constants/colors';
+import { colors } from '../constants/styles';
 
 function Header({ stockData }) {
   const {
@@ -106,7 +106,7 @@ const CurrentPrice = styled.span`
 `;
 
 const ChangeData = styled.span`
-  color: ${({ isPositive }) => isPositive ? colors.GREEN : colors.RED};
+  color: ${({ isPositive }) => isPositive ? colors.POSITIVE : colors.NEGATIVE};
   font-size: 18px;
 `;
 

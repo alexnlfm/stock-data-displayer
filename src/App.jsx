@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 import Header from './components/Header';
 import OverviewChart from './components/OverviewChart';
-import { colors } from './constants/colors';
+import { colors, BORDER_RADIUS } from './constants/styles';
 
 const staticAppleStockData = {
   companyName: 'Apple Inc.',
@@ -34,7 +34,7 @@ function App() {
     const { id } = e.target;
     setCurrentTab(id);
   }
-  
+
   return (
     <div style={{ width: '95%', margin: '0 auto' }}>      
       <Header stockData={staticAppleStockData} />
@@ -62,9 +62,9 @@ const StyledNav = styled.nav`
 const StyledTab = styled.div`
   cursor: pointer;
   padding: 10px;
-  border-radius: 5px 5px 0 0;
+  border-radius: ${BORDER_RADIUS}px ${BORDER_RADIUS}px 0 0;
   background-color: ${({ isSelected }) => isSelected ? colors.BLACK : 'transparent'};
-  color: ${({ isSelected }) => isSelected ? colors.SELECTED_TEXT : 'inherit'};
+  color: ${({ isSelected }) => isSelected ? colors.BRAND_GREEN : 'inherit'};
   font-weight: ${({ isSelected }) => isSelected ? 500 : 400};
 `;
 
