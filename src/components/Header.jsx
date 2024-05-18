@@ -64,7 +64,7 @@ const HeaderCard = styled.div`
   box-sizing: border-box;
   display: flex;
   padding: 16px 21px;
-  margin: 15px 15px 30px;
+  margin: 15px 0 30px;
   box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 6px 0px;
   border-radius: 10px;
 `;

@@ -2,6 +2,7 @@ import { useState } from 'react';
 import styled from 'styled-components';
 
 import Header from './components/Header';
+import OverviewChart from './components/OverviewChart';
 import { colors } from './constants/colors';
 
 const staticAppleStockData = {
@@ -27,11 +28,13 @@ const navigationTabs = [
 
 function App() {
   const [currentTab, setCurrentTab] = useState(navigationTabs[0].id);
+  
   function handleTabClick(e) {
     // TODO: Fix issue of redundant focusing on div (text cursor blinking on click)
     const { id } = e.target;
     setCurrentTab(id);
   }
+  
   return (
     <div style={{ width: '95%', margin: '0 auto' }}>      
       <Header stockData={staticAppleStockData} />
@@ -42,8 +45,8 @@ function App() {
           </StyledTab>
         ))}
       </StyledNav>
-      {currentTab === 'overview-chart' && (<div>Overview Chart</div>)}
-      {currentTab === 'historical-data' && (<div>Historical Data</div>)}
+      {currentTab === 'overview-chart' && (<OverviewChart />)}
+      {currentTab === 'historical-data' && (<div>Coming soon...</div>)}
     </div>
   )
 }
