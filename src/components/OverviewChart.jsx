@@ -13,6 +13,14 @@ const periods = [
   { label: '1 year', amount: 1, units: 'years' }
 ];
 
+const intervalToPeriodsMap = {
+  days: 0,
+  weeks: 10,
+  months: 40,
+  quarters: 150,
+  years: 500
+}
+
 function OverviewChart() {
   const [selectedPeriod, setSelectedPeriod] = useState({ amount: 1, units: 'days' });
   const { chartData, isLoading } = useChartData(selectedPeriod);
@@ -37,8 +45,11 @@ function OverviewChart() {
         <LineChart width={1400} height={400} data={chartData}>
           <Line type="monotone" dataKey="Close" stroke="#8884d8" />
           <CartesianGrid stroke="#ccc" />
-          <XAxis dataKey="Date" />
-          <YAxis />
+          <XAxis
+            dataKey={selectedPeriod.units === 'days' && selectedPeriod.amount === 1 ? 'StartTime' : 'Date'}
+            interval={intervalToPeriodsMap[selectedPeriod.units]}
+          />
+          <YAxis type="number" domain={['auto', 'auto']} />
         </LineChart>
       </ChartContainer>
     </>
